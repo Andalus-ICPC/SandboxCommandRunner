@@ -54,7 +54,9 @@ enum {
    CPU_TIME_LIMIT_EXCEEDED = 3,
    MEMORY_LIMIT_EXCEEDED = 4,
    RUNTIME_ERROR = 5,
-   SYSTEM_ERROR = 6
+   SYSTEM_ERROR = 6,
+   NO_OUTPUT = 7
+
 };
 struct result {
    int real_time;
