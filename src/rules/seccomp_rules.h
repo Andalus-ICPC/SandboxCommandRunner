@@ -1,10 +1,11 @@
-#ifndef COMMAND_RUNNER_SECCOMP_RULES
-#define COMMAND_RUNNER_SECCOMP_RULES
-
+#ifndef JUDGER_SECCOMP_RULES_H
+#define JUDGER_SECCOMP_RULES_H
+#include <stdbool.h>
 #include "../monitor.h"
 
-int general_rule(struct config *);
-int cpp_rule(struct config *);
+int _c_cpp_seccomp_rules(struct config *_config, bool allow_write_file);
+int c_cpp_seccomp_rules(struct config *_config);
+int general_seccomp_rules(struct config *_config);
+int c_cpp_file_io_seccomp_rules(struct config *_config);
 
-
-#endif // COMMAND_RUNNER_SECCOMP_RULES
+#endif //JUDGER_SECCOMP_RULES_H

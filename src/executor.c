@@ -118,25 +118,30 @@ void execute(FILE *log_fp, struct config *conf){
       }
    }
 
-   // load seccomp rule
-   if(conf->seccomp_rule != NULL) {
-      if(strcmp(conf->seccomp_rule, "general") == 0) {
-         if(general_rule(conf) != 0) {
+   // load seccomp
+    if (conf->seccomp_rule != NULL) {
+        if (strcmp("c_cpp", conf->seccomp_rule) == 0) {
+            if (c_cpp_seccomp_rules(conf) != SUCCESS) {
+                EXECUTOR_ERROR_EXIT(LOAD_SECCOMP_FAILED);
+            }
+        }
+        else if (strcmp("c_cpp_file_io", conf->seccomp_rule) == 0) {
+            if (c_cpp_file_io_seccomp_rules(conf) != SUCCESS) {
+                EXECUTOR_ERROR_EXIT(LOAD_SECCOMP_FAILED);
+            }
+        }
+        else if (strcmp("general", conf->seccomp_rule) == 0) {
+            if (general_seccomp_rules(conf) != SUCCESS ) {
+                EXECUTOR_ERROR_EXIT(LOAD_SECCOMP_FAILED);
+            }
+        }
+        // other rules
+        else {
+            // rule does not exist
             EXECUTOR_ERROR_EXIT(LOAD_SECCOMP_FAILED);
-         }
-      } else if(strcmp(conf->seccomp_rule, "cpp") == 0) {
+        }
+    }
 
-      } else {
-         EXECUTOR_ERROR_EXIT(INVALID_CONFIG);
-      }
-   }
-
-   // execute
-  if (execve(conf->exe_path, conf->args, conf->env) == -1) {
-   // if this is executed then execve has failed
-   EXECUTOR_ERROR_EXIT(EXECVE_FAILED);
-  }
-   
-
-
+    execve(conf->exe_path, conf->args, conf->env);
+    EXECUTOR_ERROR_EXIT(EXECVE_FAILED);
 }
