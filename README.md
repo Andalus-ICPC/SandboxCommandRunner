@@ -1,9 +1,18 @@
-```sudo apt-get install libseccomp-dev
+```
+sudo apt-get install libseccomp-dev
+```
 
-```mkdir build && cd build && cmake .. && make && sudo make install
+```
+mkdir build && cd build && cmake .. && make && sudo make install
+```
 
-```cd ..
+```
+cd ..
+```
 
-```sudo python3 bindings/python/setup.py install
+```
+sudo python3 bindings/python/setup.py install
+```
+
 
 # SandboxCommandRunner
