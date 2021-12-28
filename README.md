@@ -3,7 +3,7 @@ sudo apt-get install libseccomp-dev
 ```
 
 ```
-mkdir build && cd build && cmake .. && make && sudo make install
+mkdir build  && cmake . && make && sudo make install
 ```
 
 ```
