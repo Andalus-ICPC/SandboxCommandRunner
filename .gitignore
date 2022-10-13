@@ -9,3 +9,9 @@
 /bindings/python/*.egg-info
 /output
 /build
+/CMakeFiles
+cmake_install.cmake
+CMakeCache.txt
+CMakeLists.txt
+install_manifest.txt
+Makefile
